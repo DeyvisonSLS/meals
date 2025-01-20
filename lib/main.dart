@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals/screens/categories_grid_screen.dart';
-import 'package:meals/screens/category_meals_screen.dart';
+import 'package:meals/screens/meals_category_screen.dart';
+import 'package:meals/screens/meals_detail_screen.dart';
 import 'package:meals/utils/app_routes.dart';
 
 void main() => runApp(MyApp());
@@ -25,11 +26,26 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesGridScreen(),
       routes: {
         AppRoutes.HOME: (ctx) => CategoriesGridScreen(),
-        AppRoutes.CATEGORIES_MEALS: (ctx) => CategoriesMealsScreen(),
+        AppRoutes.CATEGORIES_MEALS: (ctx) => MealsCategory(),
+        AppRoutes.MEAL_DETAIL: (ctx) => MealsDetail()
       },
+      onGenerateRoute: (settings) {
+        if (settings.name == '/alguma-coisa') {
+          return null;
+        } else if (settings.name == '/outra-coisa') {
+          return null;
+        } else {
+          return MaterialPageRoute(
+            builder: (_) {
+              return CategoriesGridScreen();
+            },
+          );
+        }
+      },
+      onUnknownRoute: (settings) =>
+          MaterialPageRoute(builder: (_) => CategoriesGridScreen()),
     );
   }
 }

@@ -7,7 +7,7 @@ class CategoryCard extends StatelessWidget {
 
   const CategoryCard({super.key, required this.category});
 
-  void _selectCategory(BuildContext context) {
+  void _openCategory(BuildContext context) {
     Navigator.of(context).pushNamed(
       AppRoutes.CATEGORIES_MEALS,
       arguments: category,
@@ -17,7 +17,7 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => _selectCategory(context),
+      onTap: () => _openCategory(context),
       borderRadius: BorderRadius.circular(16),
       splashColor: Theme.of(context).colorScheme.secondary,
       splashFactory: InkRipple.splashFactory,
